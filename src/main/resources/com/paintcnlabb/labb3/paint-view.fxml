@@ -11,7 +11,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17.0.2-ea"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.paintcnlabb.labb3.HelloController">
+            fx:controller="com.paintcnlabb.labb3.PaintController">
     <Canvas height="400.0" width="400.0" fx:id="canvas" onMouseClicked="#onCanvasClicked"/>
 </AnchorPane>
 
