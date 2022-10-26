@@ -1,4 +1,4 @@
-module com.paintcnlabb.labb3 {
+module com.paintcnlabb.labbtre {
     requires javafx.controls;
     requires javafx.fxml;
 
