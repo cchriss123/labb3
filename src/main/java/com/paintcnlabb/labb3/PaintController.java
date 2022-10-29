@@ -31,7 +31,7 @@ public class PaintController {
         //paintModel.addSquare(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY());
 
         paintModel.shapes.add(new Circle(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY()));
-        paintModel.shapes.add(new Square(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY()));
+        //paintModel.shapes.add(new Square(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY()));
 
         updateCanvas();
     }

@@ -27,11 +27,10 @@
             </Menu>
         </MenuBar>
         <HBox prefHeight="0" prefWidth="795.0" spacing="5">
-            <ColorPicker fx:id="colorPicker"/>
-            <TextField fx:id="brushSize" text="20"/>
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
+            <ColorPicker fx:id="colorPicker" />
+            <TextField fx:id="brushSize" text="100"/>
             <Button onAction="#onUndoAction" fx:id="undoButton" mnemonicParsing="false" text="Undo" />
+            <Button mnemonicParsing="false" text="Button" />
         </HBox>
         <Canvas height="540.0" width="795.0" fx:id="canvas" onMouseClicked="#onCanvasClicked"/>
     </VBox>
