@@ -17,23 +17,27 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.paintcnlabb.labb3.PaintController">
-    <VBox prefHeight="30.0" prefWidth="600.0">
+<Pane prefHeight="595.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.paintcnlabb.labb3.PaintController">
+    <VBox prefHeight="0" prefWidth="795.0">
         <MenuBar>
             <Menu text="File">
                 <MenuItem text="Save" onAction="#save" />
                 <MenuItem text="Exit" onAction="#exit" />
             </Menu>
         </MenuBar>
-        <HBox prefHeight="100.0" prefWidth="200.0">
+        <HBox prefHeight="0" prefWidth="795.0" spacing="5">
             <ColorPicker fx:id="colorPicker"/>
             <TextField fx:id="brushSize" text="20"/>
             <Button mnemonicParsing="false" text="Button" />
             <Button mnemonicParsing="false" text="Button" />
+            <Button onAction="#onUndoAction" fx:id="undoButton" mnemonicParsing="false" text="Undo" />
         </HBox>
-        <Canvas height="400.0" width="400.0" fx:id="canvas" onMouseDragged="#onCanvasDragged"/>
+        <Canvas height="540.0" width="795.0" fx:id="canvas" onMouseClicked="#onCanvasClicked"/>
     </VBox>
 </Pane>
+
+
+
 
 
 
