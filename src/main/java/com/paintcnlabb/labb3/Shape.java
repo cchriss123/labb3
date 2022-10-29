@@ -3,7 +3,7 @@ package com.paintcnlabb.labb3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Shape {
+public abstract class Shape {
     private Color color;
     private double size;
     private double x;
@@ -15,6 +15,7 @@ public class Shape {
         this.x = x;
         this.y = y;
     }
+
 
     public double getSize() {
         return size;
@@ -48,8 +49,6 @@ public class Shape {
         this.y = y;
     }
     public void draw(GraphicsContext context){
-        context.setFill(this.getColor());
-        context.fillOval(getX()-(size/2),getY()- (size/2), size,size);
 
     }
 }

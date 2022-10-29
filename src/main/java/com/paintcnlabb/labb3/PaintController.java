@@ -27,8 +27,12 @@ public class PaintController {
 
     public void onCanvasClicked(MouseEvent mouseEvent) {
         double size = Double.parseDouble(brushSize.getText());
-        paintModel.addShape(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY());
-        //paintModel.shapes.add(new Shape(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY()));
+        //paintModel.addCircle(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY());
+        //paintModel.addSquare(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY());
+
+        paintModel.shapes.add(new Circle(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY()));
+        paintModel.shapes.add(new Square(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY()));
+
         updateCanvas();
     }
 
@@ -40,7 +44,8 @@ public class PaintController {
     }
 
     public void onUndoAction(ActionEvent event) {
-        paintModel.undoShape();
+        paintModel.shapes.remove(paintModel.shapes.size()-1);
+        //paintModel.undoShape();
         updateCanvas();
     }
 
