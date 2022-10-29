@@ -22,6 +22,7 @@
         <MenuBar>
             <Menu text="File">
                 <MenuItem text="Save" onAction="#save" />
+                <MenuItem text="Open" onAction="#open" />
                 <MenuItem text="Exit" onAction="#exit" />
             </Menu>
         </MenuBar>

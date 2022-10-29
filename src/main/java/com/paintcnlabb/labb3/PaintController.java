@@ -6,6 +6,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
 
 public class PaintController {
 
@@ -15,6 +19,7 @@ public class PaintController {
     public GraphicsContext context;
     public ColorPicker colorPicker;
     public TextField brushSize;
+    public Stage stage;
 
     public void initialize(){
         context = canvas.getGraphicsContext2D();
@@ -22,30 +27,46 @@ public class PaintController {
 
     public void onCanvasClicked(MouseEvent mouseEvent) {
         double size = Double.parseDouble(brushSize.getText());
-        //paintModel.addShape(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY());
-        paintModel.shapes.add(new Shape(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY()));
-        update();
+        paintModel.addShape(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY());
+        //paintModel.shapes.add(new Shape(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY()));
+        updateCanvas();
     }
 
-    private void update() {
+    private void updateCanvas() {
         context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (var shape : paintModel.shapes) {
             shape.draw(context);
         }
     }
 
+    public void onUndoAction(ActionEvent event) {
+        paintModel.undoShape();
+        updateCanvas();
+    }
+
+
+
     public void save(ActionEvent actionEvent) {
-        //TODO
+        FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setTitle("Save as");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().clear();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV","*.csv"));
+
+        File filePath = fileChooser.showSaveDialog(stage);
+
+        if(filePath != null)
+            paintModel.saveToFile(filePath.toPath());
+
     }
 
     public void exit(ActionEvent actionEvent) {
         System.exit(0);
     }
 
-    public void onUndoAction(ActionEvent event) {
-        paintModel.undoShape();
-        update();
+    public void open(ActionEvent event) {
+        // TODO
     }
-
 }
 
