@@ -14,6 +14,9 @@ public class Circle extends Shape {
         context.setFill(this.getColor());
         context.fillOval(getX()-(getSize()/2),getY()- (getSize()/2), getSize(),getSize());
 
-    }
 
+
+
+
+    }
 }

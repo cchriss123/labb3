@@ -11,9 +11,14 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
+
 public class PaintController {
 
     paintModel paintModel = new paintModel();
+
+
+
+
 
     public Canvas canvas;
     public GraphicsContext context;
@@ -71,7 +76,7 @@ public class PaintController {
     }
 
     public void open(ActionEvent event) {
-        // TODO
+        //TODO
     }
 }
 
