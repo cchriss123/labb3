@@ -6,6 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -17,29 +18,34 @@ public class PaintController {
     paintModel paintModel = new paintModel();
 
 
-
-
-
     public Canvas canvas;
     public GraphicsContext context;
     public ColorPicker colorPicker;
-    public TextField brushSize;
+    public TextField size;
     public Stage stage;
 
     public void initialize(){
 
         context = canvas.getGraphicsContext2D();
-        colorPicker.valueProperty().bindBidirectional(paintModel.getColorProperty());
+        size.textProperty().bindBidirectional(paintModel.textProperty());
+        colorPicker.valueProperty().bindBidirectional(paintModel.colorProperty());
+
+
+
 
     }
 
     public void onCanvasClicked(MouseEvent mouseEvent) {
-        double size = Double.parseDouble(brushSize.getText());
-        //paintModel.addCircle(paintModel.getColor(), size, mouseEvent.getX(), mouseEvent.getY());
-        paintModel.addSquare(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY());
 
+        //System.out.println(paintModel.shapes.get(0).isInsideArea(mouseEvent.getX(), mouseEvent.getY()));
+
+        paintModel.addCircle(mouseEvent.getX(), mouseEvent.getY());
+        paintModel.addSquare(mouseEvent.getX(), mouseEvent.getY());
 
         updateCanvas();
+
+
+
     }
 
     private void updateCanvas() {

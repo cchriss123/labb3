@@ -28,7 +28,7 @@
         </MenuBar>
         <HBox prefHeight="0" prefWidth="795.0" spacing="5">
             <ColorPicker fx:id="colorPicker" />
-            <TextField fx:id="brushSize" text="100"/>
+            <TextField fx:id="size" text="100"/>
             <Button onAction="#onUndoAction" fx:id="undoButton" mnemonicParsing="false" text="Undo" />
             <Button mnemonicParsing="false" text="Button" />
         </HBox>

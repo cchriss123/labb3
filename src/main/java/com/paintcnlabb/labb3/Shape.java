@@ -49,7 +49,8 @@ public abstract class Shape {
         this.y = y;
     }
 
-    public void draw(GraphicsContext context){
+    public abstract void draw(GraphicsContext context);
 
-    }
+    public abstract boolean isInsideArea(double x, double y);
+
 }
