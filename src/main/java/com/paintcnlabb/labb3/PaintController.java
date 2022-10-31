@@ -27,16 +27,17 @@ public class PaintController {
     public Stage stage;
 
     public void initialize(){
+
         context = canvas.getGraphicsContext2D();
+        colorPicker.valueProperty().bindBidirectional(paintModel.getColorProperty());
+
     }
 
     public void onCanvasClicked(MouseEvent mouseEvent) {
         double size = Double.parseDouble(brushSize.getText());
-        //paintModel.addCircle(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY());
-        //paintModel.addSquare(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY());
+        //paintModel.addCircle(paintModel.getColor(), size, mouseEvent.getX(), mouseEvent.getY());
+        paintModel.addSquare(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY());
 
-        paintModel.shapes.add(new Circle(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY()));
-        //paintModel.shapes.add(new Square(colorPicker.getValue(), size, mouseEvent.getX(), mouseEvent.getY()));
 
         updateCanvas();
     }
@@ -49,8 +50,8 @@ public class PaintController {
     }
 
     public void onUndoAction(ActionEvent event) {
-        paintModel.shapes.remove(paintModel.shapes.size()-1);
-        //paintModel.undoShape();
+
+        paintModel.undoShape();
         updateCanvas();
     }
 
