@@ -26,11 +26,17 @@ public class Circle extends Shape {
 
 
         //In general, x and y must satisfy (x - center_x)² + (y - center_y)² < radius².
-        double distanceXSquare = (x - getX())*(x - getX());
-        double distanceYSquare = (y - getY())*(y - getY());
-        double radiusSquare = radius * radius;
 
-        return (distanceXSquare+distanceYSquare) < radiusSquare;
+        //double distanceXSquared = Math.sqrt(x - getX()*x-getX());
+        //double distanceYSquared = Math.sqrt(y - getY());
+        //double radiusSquared = Math.sqrt(radius);
+
+
+        double distanceXSquared = (x - getX())*(x - getX());
+        double distanceYSquared = (y - getY())*(y - getY());
+        double radiusSquared = radius * radius;
+
+        return (distanceXSquared+distanceYSquared) < radiusSquared;
         }
 
 

@@ -17,6 +17,8 @@ public abstract class Shape {
     }
 
 
+
+
     public double getSize() {
         return size;
     }

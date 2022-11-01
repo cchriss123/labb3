@@ -1,14 +1,20 @@
 package com.paintcnlabb.labb3;
 
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
+import javafx.util.converter.DoubleStringConverter;
 
 import java.io.File;
 
@@ -17,20 +23,27 @@ public class PaintController {
 
     paintModel paintModel = new paintModel();
 
-
+    ObservableList<ShapeType> shapeTypesList = FXCollections.observableArrayList(ShapeType.values());
+    public ChoiceBox<ShapeType> choiceBox;
     public Canvas canvas;
     public GraphicsContext context;
     public ColorPicker colorPicker;
     public TextField size;
     public Stage stage;
 
+
     public void initialize(){
+        choiceBox.setItems(shapeTypesList);
+        choiceBox.setValue(ShapeType.CIRCLE);
 
         context = canvas.getGraphicsContext2D();
-        size.textProperty().bindBidirectional(paintModel.textProperty());
+
+        StringConverter converter = new DoubleStringConverter();
+        Bindings.bindBidirectional(size.textProperty(),paintModel.sizeProperty() ,converter );
         colorPicker.valueProperty().bindBidirectional(paintModel.colorProperty());
 
 
+        updateCanvas();
 
 
     }
@@ -39,8 +52,8 @@ public class PaintController {
 
         //System.out.println(paintModel.shapes.get(0).isInsideArea(mouseEvent.getX(), mouseEvent.getY()));
 
-        paintModel.addCircle(mouseEvent.getX(), mouseEvent.getY());
-        paintModel.addSquare(mouseEvent.getX(), mouseEvent.getY());
+
+        paintModel.createShape(choiceBox.getValue(),mouseEvent.getX(), mouseEvent.getY());
 
         updateCanvas();
 
@@ -85,5 +98,7 @@ public class PaintController {
     public void open(ActionEvent event) {
         //TODO
     }
+
+
 }
 

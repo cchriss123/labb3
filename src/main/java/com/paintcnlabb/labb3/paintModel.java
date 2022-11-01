@@ -12,25 +12,23 @@ import java.nio.file.Path;
 public class paintModel {
 
     ObjectProperty<Color> color;
-    StringProperty size;
+    DoubleProperty size;
+
     ObservableList<Shape> shapes = FXCollections.observableArrayList();
-
-
 
 
     public paintModel() {
         this.color = new SimpleObjectProperty<>(Color.BLACK);
-        this.size = new SimpleStringProperty("100");
+        this.size = new SimpleDoubleProperty(50.0);
+
     }
 
-    void addCircle(double x, double y) {
-        shapes.add(new Circle(getColor(), getSize(), x, y));
+    public void createShape(ShapeType type,double x, double y){
+        switch (type) {
+            case CIRCLE -> shapes.add(new Circle(getColor(), getSize(), x, y));
+            case SQUARE -> shapes.add(new Square(getColor(), getSize(), x, y));
+        };
     }
-
-    void addSquare(double x, double y) {
-        shapes.add(new Square(getColor(), getSize(), x, y));
-    }
-
 
     public void undoShape() {
         shapes.remove(shapes.size()-1);
@@ -61,22 +59,24 @@ public class paintModel {
         return color;
     }
 
-    public Property<String> textProperty() {
-        return size;
-    }
-
-
     public Color getColor() {
         return color.get();
     }
 
-    public Double getSize() {
-        return Double.parseDouble(size.get());
-
+    public void setColor(Color color) {
+        this.color.set(color);
     }
 
+    public double getSize() {
+        return size.get();
+    }
 
+    public DoubleProperty sizeProperty() {
+        return size;
+    }
 
-
+    public void setSize(double size) {
+        this.size.set(size);
+    }
 }
 
