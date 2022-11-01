@@ -11,6 +11,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
@@ -50,12 +51,37 @@ public class PaintController {
 
     public void onCanvasClicked(MouseEvent mouseEvent) {
 
-        //System.out.println(paintModel.shapes.get(0).isInsideArea(mouseEvent.getX(), mouseEvent.getY()));
+        switch (mouseEvent.getButton()) {
+            case PRIMARY -> {
+                paintModel.createShape(choiceBox.getValue(), mouseEvent.getX(), mouseEvent.getY());
+                updateCanvas();
+            }
+            case SECONDARY -> {
+
+               paintModel.shapes.stream()
+                    .filter(shape -> shape.isInsideArea(mouseEvent.getX(), mouseEvent.getY()))
+                    .findFirst().ifPresent(shape -> shape.setColor(colorPicker.getValue()));
+
+                paintModel.shapes.stream()
+                        .filter(shape -> shape.isInsideArea(mouseEvent.getX(), mouseEvent.getY()))
+                        .findFirst().ifPresent(shape -> shape.setSize(paintModel.getSize()));
 
 
-        paintModel.createShape(choiceBox.getValue(),mouseEvent.getX(), mouseEvent.getY());
+                updateCanvas();
+            }
+        }
 
-        updateCanvas();
+
+
+
+            //System.out.println(paintModel.shapes.get(0).isInsideArea(mouseEvent.getX(), mouseEvent.getY()));
+
+
+
+
+
+
+
 
 
 
