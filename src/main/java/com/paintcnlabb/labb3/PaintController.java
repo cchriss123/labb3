@@ -99,7 +99,39 @@ public class PaintController {
     }
 
     public void open() {
-        //TODO
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV","*.csv"));
+        fileChooser.getExtensionFilters().addAll();
+
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if(selectedFile!=null){
+            System.out.println("Open File");
+            System.out.println(selectedFile.getPath());
+            paintModel.loadFile(selectedFile);
+        }
+
+
+
+
+
+
+
+        /*
+        fileChooser.setTitle("Save as");
+
+        fileChooser.getExtensionFilters().clear();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV","*.csv"));
+
+        File filePath = fileChooser.showSaveDialog(stage);
+
+        if(filePath != null)
+            paintModel.saveToFile(filePath.toPath());
+            */
+
+
     }
 
 

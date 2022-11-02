@@ -5,6 +5,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,6 +35,7 @@ public class paintModel {
 
     public void undoShape() {
         shapes.remove(shapes.size()-1);
+
     }
 
 
@@ -82,6 +85,12 @@ public class paintModel {
 
     public Property<ShapeType> currentShapeTypeProperty() {
         return currentShapeType;
+    }
+
+    public void loadFile(File selectedFile) {
+
+
+
     }
 }
 
