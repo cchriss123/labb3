@@ -35,10 +35,8 @@
             <ColorPicker fx:id="colorPicker" />
             <TextField fx:id="size"/>
             <ChoiceBox fx:id="choiceBox"/>
-
-            <Button onAction="#onUndoAction" fx:id="undoButton" mnemonicParsing="false" text="Undo" />
-
-            <Button mnemonicParsing="false" text="Button" />
+            <Button onAction="#onUndoAction" mnemonicParsing="false" text="Undo" />
+            <Button onAction="#onRedoAction" mnemonicParsing="false" text="Redo" />
         </HBox>
         <Canvas height="540.0" width="795.0" fx:id="canvas" onMouseClicked="#onCanvasClicked"/>
     </VBox>

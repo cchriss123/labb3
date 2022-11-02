@@ -5,7 +5,6 @@ import javafx.scene.paint.Color;
 
 public class Circle extends Shape {
 
-    double radius = (getSize()/2);
 
     public Circle(Color currentColor, double size, double x, double y) {
         super(currentColor, size, x ,y);
@@ -14,6 +13,9 @@ public class Circle extends Shape {
 
     @Override
     public void draw(GraphicsContext context){
+
+        double radius = getSize()/2;
+
         context.setFill(this.getColor());
         context.fillOval(getX()-radius,getY()-radius, getSize(),getSize());
 
@@ -23,6 +25,10 @@ public class Circle extends Shape {
 
     @Override
     public boolean isInsideArea(double x, double y) {
+
+        double radius = getSize()/2;
+
+
 
 
         //In general, x and y must satisfy (x - center_x)² + (y - center_y)² < radius².

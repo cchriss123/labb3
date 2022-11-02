@@ -9,10 +9,13 @@ public class Square extends Shape {
         super(currentColor, size, x, y);
     }
 
-    double distanceCenterToSide = (getSize()/2);
+
 
     @Override
     public void draw(GraphicsContext context) {
+
+        double distanceCenterToSide = (getSize()/2);
+
         context.setFill(this.getColor());
         context.fillRect(getX() - distanceCenterToSide, getY() - distanceCenterToSide, getSize(), getSize());
 
@@ -20,6 +23,8 @@ public class Square extends Shape {
 
     @Override
     public boolean isInsideArea(double x, double y) {
+
+        double distanceCenterToSide = (getSize()/2);
 
         double distanceX = Math.abs(x - getX());
         double distanceY = Math.abs(y - getY());

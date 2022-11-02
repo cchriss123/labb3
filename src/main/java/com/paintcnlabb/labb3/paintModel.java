@@ -14,6 +14,7 @@ public class paintModel {
     ObjectProperty<Color> color;
     DoubleProperty size;
 
+    ObjectProperty<ShapeType> currentShapeType = new SimpleObjectProperty<>(ShapeType.CIRCLE);
     ObservableList<Shape> shapes = FXCollections.observableArrayList();
 
 
@@ -77,6 +78,10 @@ public class paintModel {
 
     public void setSize(double size) {
         this.size.set(size);
+    }
+
+    public Property<ShapeType> currentShapeTypeProperty() {
+        return currentShapeType;
     }
 }
 

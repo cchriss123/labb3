@@ -17,7 +17,15 @@ public abstract class Shape {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "Shape{" +
+                "color=" + color +
+                ", size=" + size +
+                ", x=" + x +
+                ", y=" + y +
+                '}';
+    }
 
     public double getSize() {
         return size;

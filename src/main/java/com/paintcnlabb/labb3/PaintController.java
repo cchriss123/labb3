@@ -3,24 +3,21 @@ package com.paintcnlabb.labb3;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
-
 import java.io.File;
 
 
 public class PaintController {
+
 
     paintModel paintModel = new paintModel();
 
@@ -35,17 +32,12 @@ public class PaintController {
 
     public void initialize(){
         choiceBox.setItems(shapeTypesList);
-        choiceBox.setValue(ShapeType.CIRCLE);
-
+        choiceBox.valueProperty().bindBidirectional(paintModel.currentShapeTypeProperty());
         context = canvas.getGraphicsContext2D();
-
         StringConverter converter = new DoubleStringConverter();
         Bindings.bindBidirectional(size.textProperty(),paintModel.sizeProperty() ,converter );
         colorPicker.valueProperty().bindBidirectional(paintModel.colorProperty());
-
-
         updateCanvas();
-
 
     }
 
@@ -57,34 +49,16 @@ public class PaintController {
                 updateCanvas();
             }
             case SECONDARY -> {
-
-               paintModel.shapes.stream()
+                paintModel.shapes.stream()
                     .filter(shape -> shape.isInsideArea(mouseEvent.getX(), mouseEvent.getY()))
                     .findFirst().ifPresent(shape -> shape.setColor(colorPicker.getValue()));
-
                 paintModel.shapes.stream()
                         .filter(shape -> shape.isInsideArea(mouseEvent.getX(), mouseEvent.getY()))
                         .findFirst().ifPresent(shape -> shape.setSize(paintModel.getSize()));
-
-
                 updateCanvas();
+
             }
         }
-
-
-
-
-            //System.out.println(paintModel.shapes.get(0).isInsideArea(mouseEvent.getX(), mouseEvent.getY()));
-
-
-
-
-
-
-
-
-
-
     }
 
     private void updateCanvas() {
@@ -94,17 +68,20 @@ public class PaintController {
         }
     }
 
-    public void onUndoAction(ActionEvent event) {
-
+    public void onUndoAction() {
         paintModel.undoShape();
         updateCanvas();
     }
 
+    public void onRedoAction() {
+        System.out.println("TBC");
+        updateCanvas();
+    }
 
 
-    public void save(ActionEvent actionEvent) {
+    public void save() {
+
         FileChooser fileChooser = new FileChooser();
-
         fileChooser.setTitle("Save as");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         fileChooser.getExtensionFilters().clear();
@@ -117,11 +94,11 @@ public class PaintController {
 
     }
 
-    public void exit(ActionEvent actionEvent) {
+    public void exit() {
         System.exit(0);
     }
 
-    public void open(ActionEvent event) {
+    public void open() {
         //TODO
     }
 
