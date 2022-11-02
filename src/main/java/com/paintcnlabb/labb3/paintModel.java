@@ -40,10 +40,10 @@ public class paintModel {
 
     public void undoShape() {
 
-        undoList.add(shapes.get(shapes.size()-1));
-        shapes.remove(shapes.size()-1);
-
-
+    if(shapes.size()>0) {
+        undoList.add(shapes.get(shapes.size() - 1));
+        shapes.remove(shapes.size() - 1);
+        }
     }
 
 
@@ -102,14 +102,10 @@ public class paintModel {
     }
 
     public void redoShape() {
-
-        shapes.add(undoList.get(undoList.size()-1));
-        undoList.remove(undoList.get(undoList.size()-1));
-
-
-
-
-
+        if(undoList.size() > 0) {
+            shapes.add(undoList.get(undoList.size() - 1));
+            undoList.remove(undoList.get(undoList.size() - 1));
+        }
 
     }
 }
