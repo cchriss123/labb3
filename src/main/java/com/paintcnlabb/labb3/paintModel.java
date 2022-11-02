@@ -1,5 +1,7 @@
 package com.paintcnlabb.labb3;
 
+
+
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,14 +12,17 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 public class paintModel {
 
     ObjectProperty<Color> color;
     DoubleProperty size;
 
+
     ObjectProperty<ShapeType> currentShapeType = new SimpleObjectProperty<>(ShapeType.CIRCLE);
     ObservableList<Shape> shapes = FXCollections.observableArrayList();
+    ArrayList<Shape> undoList = new ArrayList();
 
 
     public paintModel() {
@@ -34,7 +39,10 @@ public class paintModel {
     }
 
     public void undoShape() {
+
+        undoList.add(shapes.get(shapes.size()-1));
         shapes.remove(shapes.size()-1);
+
 
     }
 
@@ -88,6 +96,18 @@ public class paintModel {
     }
 
     public void loadFile(File selectedFile) {
+        //TODO
+
+
+    }
+
+    public void redoShape() {
+
+        shapes.add(undoList.get(undoList.size()-1));
+        undoList.remove(undoList.get(undoList.size()-1));
+
+
+
 
 
 

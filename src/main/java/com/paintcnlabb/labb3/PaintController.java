@@ -74,6 +74,7 @@ public class PaintController {
     }
 
     public void onRedoAction() {
+        paintModel.redoShape();
         System.out.println("TBC");
         updateCanvas();
     }
