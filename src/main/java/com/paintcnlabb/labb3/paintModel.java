@@ -35,6 +35,7 @@ public class paintModel {
         switch (type) {
             case CIRCLE -> shapes.add(new Circle(getColor(), getSize(), x, y));
             case SQUARE -> shapes.add(new Square(getColor(), getSize(), x, y));
+            case TRIANGLE -> shapes.add(new Triangle(getColor(), getSize(), x, y));
         };
     }
 
