@@ -82,6 +82,8 @@ public class PaintController {
 
 
     public void save() {
+
+        //svgWriter.saveToFile(paintModel, stage);
         /*
 
         FileChooser fileChooser = new FileChooser();
@@ -103,7 +105,8 @@ public class PaintController {
         System.exit(0);
     }
 
-
-
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 }
 

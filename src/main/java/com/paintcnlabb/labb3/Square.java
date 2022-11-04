@@ -36,10 +36,6 @@ public class Square extends Shape {
             return (distanceX < distanceCenterToSide) && (distanceY < distanceCenterToSide);
         return false;
 
-
-
-
-
 /*
         if ((x > getX() - distanceCenterToSide) && (x < getX() + distanceCenterToSide))
             return (y > getY() - distanceCenterToSide) && y < (getY() + distanceCenterToSide);
@@ -49,6 +45,17 @@ public class Square extends Shape {
  */
 
     }
+
+    @Override
+    public String writeSVG() {
+        String convertColor = getColor().toString().substring(2, 10);
+        return "<rect x=\"" + (getX() - getSize()/2) + "\" " +
+                "y=\"" + (getY() - getSize()/2) + "\" " +
+                "width=\"" + getSize() + "\" " +
+                "height=\"" + getSize() + "\" " +
+                "fill=\"#" + convertColor + "\" />";
+    }
+
 
 }
 

@@ -28,9 +28,6 @@ public class Circle extends Shape {
 
         double radius = getSize()/2;
 
-
-
-
         //In general, x and y must satisfy (x - center_x)² + (y - center_y)² < radius².
 
         //double distanceXSquared = Math.sqrt(x - getX()*x-getX());
@@ -45,11 +42,12 @@ public class Circle extends Shape {
         return (distanceXSquared+distanceYSquared) < radiusSquared;
         }
 
-
-
-
-
-
-
-
+    @Override
+    public String writeSVG() {
+        String convertColor = "#" + getColor().toString().substring(2, 10);
+        return "<circle cx=\"" + getX() + "\" " +
+                "cy=\"" + getY() + "\" " +
+                "r=\"" + getSize() / 2 + "\" " +
+                "fill=\"" + convertColor + "\" />";
+    }
 }

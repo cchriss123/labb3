@@ -63,4 +63,6 @@ public abstract class Shape {
 
     public abstract boolean isInsideArea(double x, double y);
 
+    public abstract String writeSVG();{
+    }
 }

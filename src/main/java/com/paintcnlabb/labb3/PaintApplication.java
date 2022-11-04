@@ -15,6 +15,9 @@ public class PaintApplication extends Application {
         stage.setTitle("Paint!");
         stage.setScene(scene);
         stage.show();
+        PaintController paintController = fxmlLoader.getController();
+        paintController.setStage(stage);
+
     }
 
     public static void main(String[] args) {

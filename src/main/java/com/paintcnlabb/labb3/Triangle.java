@@ -43,8 +43,6 @@ public class Triangle extends Shape {
     @Override
     public boolean isInsideArea(double x, double y) {
 
-
-
         var distanceX = x - xcoords[2];
         var distanceY = y - ycoords[2];
         var distanceX21 = xcoords[2]-xcoords[1];
@@ -58,18 +56,13 @@ public class Triangle extends Shape {
             return s<=0 && t<=0 && s+t>=D;
         return s>=0 && t>=0 && s+t<=D;
 
-
-
-
         /*
-
         var x1 = xcoords[0];
         var x2 = xcoords[1];
         var x3 = xcoords[2];
         var y1 = xcoords[0];
         var y2 = xcoords[1];
         var y3 = xcoords[2];
-
 
         var areaOrig = Math.abs((x2-x1)*(y3-y1) - (x3-x1)*(y2-y1)) ;
 
@@ -85,7 +78,13 @@ public class Triangle extends Shape {
         return area1 + area2 + area3 == areaOrig;
 
          */
-
-
     }
+
+    @Override
+    public String writeSVG() {
+    return "Triangele TBC";
+    }
+
+
+
 }
