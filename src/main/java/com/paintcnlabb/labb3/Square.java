@@ -26,17 +26,15 @@ public class Square extends Shape {
 
         double distanceCenterToSide = (getSize()/2);
 
-        double distanceX = Math.abs(x - getX());
-        double distanceY = Math.abs(y - getY());
+        //double distanceX = Math.abs(x - getX());
+        //double distanceY = Math.abs(y - getY());
+        //return (distanceX < distanceCenterToSide) && (distanceY < distanceCenterToSide);
 
-        /*
-        distanceX = x - getX();
-        if (distanceX <0)
-            distanceX = distanceX*-1;
-
-         */
-
-        return (distanceX < distanceCenterToSide) && (distanceY < distanceCenterToSide);
+        double distanceX = (x - getX());
+        double distanceY = (y - getY());
+        if(distanceX > 0 && distanceY > 0)
+            return (distanceX < distanceCenterToSide) && (distanceY < distanceCenterToSide);
+        return false;
 
 
 

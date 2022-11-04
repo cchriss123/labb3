@@ -49,9 +49,11 @@ public class PaintController {
                 updateCanvas();
             }
             case SECONDARY -> {
+
                 paintModel.shapes.stream()
                     .filter(shape -> shape.isInsideArea(mouseEvent.getX(), mouseEvent.getY()))
                     .findFirst().ifPresent(shape -> shape.setColor(colorPicker.getValue()));
+
                 paintModel.shapes.stream()
                         .filter(shape -> shape.isInsideArea(mouseEvent.getX(), mouseEvent.getY()))
                         .findFirst().ifPresent(shape -> shape.setSize(paintModel.getSize()));
