@@ -1,20 +1,17 @@
 package com.paintcnlabb.labb3;
 
-
-
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-public class paintModel {
+public class PaintModel {
 
     ObjectProperty<Color> color;
     DoubleProperty size;
@@ -25,7 +22,7 @@ public class paintModel {
     ArrayList<Shape> undoList = new ArrayList();
 
 
-    public paintModel() {
+    public PaintModel() {
         this.color = new SimpleObjectProperty<>(Color.BLACK);
         this.size = new SimpleDoubleProperty(50.0);
 
@@ -47,26 +44,6 @@ public class paintModel {
         }
     }
 
-
-
-    public void saveToFile(Path file) {
-        StringBuffer outPut = new StringBuffer();
-        for (int i = 0; i < shapes.size() - 1; i++) {
-            outPut.append(shapes.get(i).getColor());
-            outPut.append(",");
-            outPut.append(shapes.get(i).getSize());
-            outPut.append(",");
-            outPut.append(shapes.get(i).getX());
-            outPut.append(",");
-            outPut.append(shapes.get(i).getY());
-        }
-        try {
-            Files.writeString(file, outPut.toString());
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public Property<Color> colorProperty() {
         return color;
@@ -94,12 +71,6 @@ public class paintModel {
 
     public Property<ShapeType> currentShapeTypeProperty() {
         return currentShapeType;
-    }
-
-    public void loadFile(File selectedFile) {
-        //TODO
-
-
     }
 
     public void redoShape() {

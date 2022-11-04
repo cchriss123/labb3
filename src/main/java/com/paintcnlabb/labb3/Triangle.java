@@ -43,7 +43,7 @@ public class Triangle extends Shape {
     @Override
     public boolean isInsideArea(double x, double y) {
 
-        /*
+
 
         var distanceX = x - xcoords[2];
         var distanceY = y - ycoords[2];
@@ -58,9 +58,10 @@ public class Triangle extends Shape {
             return s<=0 && t<=0 && s+t>=D;
         return s>=0 && t>=0 && s+t<=D;
 
-         */
 
 
+
+        /*
 
         var x1 = xcoords[0];
         var x2 = xcoords[1];
@@ -83,16 +84,8 @@ public class Triangle extends Shape {
 
         return area1 + area2 + area3 == areaOrig;
 
+         */
+
 
     }
-
-
-
-
-
-
-
-
-
-
 }

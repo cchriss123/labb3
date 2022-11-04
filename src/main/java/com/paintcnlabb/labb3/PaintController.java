@@ -19,7 +19,7 @@ import java.io.File;
 public class PaintController {
 
 
-    paintModel paintModel = new paintModel();
+    PaintModel paintModel = new PaintModel();
 
     ObservableList<ShapeType> shapeTypesList = FXCollections.observableArrayList(ShapeType.values());
     public ChoiceBox<ShapeType> choiceBox;
@@ -82,6 +82,7 @@ public class PaintController {
 
 
     public void save() {
+        /*
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save as");
@@ -93,6 +94,8 @@ public class PaintController {
 
         if(filePath != null)
             paintModel.saveToFile(filePath.toPath());
+
+         */
 
     }
 
@@ -100,41 +103,6 @@ public class PaintController {
         System.exit(0);
     }
 
-    public void open() {
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV","*.csv"));
-        fileChooser.getExtensionFilters().addAll();
-
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        if(selectedFile!=null){
-            System.out.println("Open File");
-            System.out.println(selectedFile.getPath());
-            paintModel.loadFile(selectedFile);
-        }
-
-
-
-
-
-
-
-        /*
-        fileChooser.setTitle("Save as");
-
-        fileChooser.getExtensionFilters().clear();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV","*.csv"));
-
-        File filePath = fileChooser.showSaveDialog(stage);
-
-        if(filePath != null)
-            paintModel.saveToFile(filePath.toPath());
-            */
-
-
-    }
 
 
 }
