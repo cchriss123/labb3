@@ -45,7 +45,8 @@ public class Circle extends Shape {
     @Override
     public String writeSVG() {
         String convertColor = "#" + getColor().toString().substring(2, 10);
-        return "<circle cx=\"" + getX() + "\" " +
+        return "<circle " +
+                "cx=\"" + getX() + "\" " +
                 "cy=\"" + getY() + "\" " +
                 "r=\"" + getSize() / 2 + "\" " +
                 "fill=\"" + convertColor + "\" />";

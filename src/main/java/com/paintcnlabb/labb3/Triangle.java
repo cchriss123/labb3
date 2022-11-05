@@ -3,6 +3,8 @@ package com.paintcnlabb.labb3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.Arrays;
+
 public class Triangle extends Shape {
 
     double[] xcoords = new double[3];
@@ -81,12 +83,30 @@ public class Triangle extends Shape {
     }
 
     @Override
+    public String toString() {
+        return "Triangle{" +
+                "xcoords=" + Arrays.toString(xcoords) +
+                ", ycoords=" + Arrays.toString(ycoords) +
+                '}';
+    }
+
+    @Override
 
     //TODO!!!!
     public String writeSVG() {
-    return "Triangele TBC";
+
+        double sizeSquarded = getSize() * getSize();
+        double halfSizeSquared = (getSize()/2)*(getSize()/2);
+        double hight = Math.sqrt(sizeSquarded-halfSizeSquared);
+
+
+        String convertColor = "#" + getColor().toString().substring(2, 10);
+        return "<polygon " +
+                "points=" +
+                "\"" +
+                (getX())               + "," + (getY()-hight*0.67) + " " +
+                (getX()+(getSize()/2)) + "," + (getY()+hight*0.33) + " " +
+                (getX()-(getSize()/2)) + "," + (getY()+hight*0.33) +
+                "\" " + "fill=\"" + convertColor + "\" />";
     }
-
-
-
 }
