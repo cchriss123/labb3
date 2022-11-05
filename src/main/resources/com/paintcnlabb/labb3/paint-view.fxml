@@ -12,20 +12,26 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.control.ChoiceBox?>
 
+<?import javafx.scene.control.ToolBar?>
 <Pane prefHeight="595.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.paintcnlabb.labb3.PaintController">
-    <VBox prefHeight="0" prefWidth="795.0">
+    <VBox prefHeight="50" prefWidth="795.0">
         <MenuBar>
             <Menu text="File">
                 <MenuItem text="Save" onAction="#save" />
                 <MenuItem text="Exit" onAction="#exit" />
             </Menu>
+            <Menu text="Help">
+                <MenuItem disable="true" text="Left click to paint new shape, right click on shape to change its size and color."/>
+            </Menu>
         </MenuBar>
         <HBox prefHeight="0" prefWidth="795.0" spacing="5">
-            <ColorPicker fx:id="colorPicker" />
-            <TextField fx:id="size"/>
-            <ChoiceBox fx:id="choiceBox"/>
-            <Button onAction="#onUndoAction" mnemonicParsing="false" text="Undo" />
-            <Button onAction="#onRedoAction" mnemonicParsing="false" text="Redo" />
+            <ToolBar prefWidth="795.0">
+                <ColorPicker fx:id="colorPicker" />
+                <TextField fx:id="size"/>
+                <ChoiceBox fx:id="choiceBox"/>
+                <Button onAction="#onUndoAction" mnemonicParsing="false" text="Undo" />
+                <Button onAction="#onRedoAction" mnemonicParsing="false" text="Redo" />
+            </ToolBar>
         </HBox>
         <Canvas height="540.0" width="795.0" fx:id="canvas" onMouseClicked="#onCanvasClicked"/>
     </VBox>
