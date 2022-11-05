@@ -30,21 +30,9 @@ public class Square extends Shape {
         //double distanceY = Math.abs(y - getY());
         //return (distanceX < distanceCenterToSide) && (distanceY < distanceCenterToSide);
 
-        double distanceX = (x - getX());
-        double distanceY = (y - getY());
-        if(distanceX > 0 && distanceY > 0)
-            return (distanceX < distanceCenterToSide) && (distanceY < distanceCenterToSide);
-        return false;
-        //TODO FIND THE BUG!
-
-/*
         if ((x > getX() - distanceCenterToSide) && (x < getX() + distanceCenterToSide))
             return (y > getY() - distanceCenterToSide) && y < (getY() + distanceCenterToSide);
         return false;
-
-
- */
-
     }
 
     @Override

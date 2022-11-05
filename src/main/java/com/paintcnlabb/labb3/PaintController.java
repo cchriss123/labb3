@@ -9,12 +9,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
-import java.io.File;
-
 
 public class PaintController {
 
@@ -39,7 +36,6 @@ public class PaintController {
         Bindings.bindBidirectional(size.textProperty(),paintModel.sizeProperty() ,converter );
         colorPicker.valueProperty().bindBidirectional(paintModel.colorProperty());
         updateCanvas();
-
     }
 
     public void onCanvasClicked(MouseEvent mouseEvent) {
@@ -50,7 +46,6 @@ public class PaintController {
                 updateCanvas();
             }
             case SECONDARY -> {
-
                 paintModel.shapes.stream()
                     .filter(shape -> shape.isInsideArea(mouseEvent.getX(), mouseEvent.getY()))
                     .findFirst().ifPresent(shape -> shape.setColor(colorPicker.getValue()));
@@ -58,8 +53,8 @@ public class PaintController {
                 paintModel.shapes.stream()
                         .filter(shape -> shape.isInsideArea(mouseEvent.getX(), mouseEvent.getY()))
                         .findFirst().ifPresent(shape -> shape.setSize(paintModel.getSize()));
-                updateCanvas();
 
+                updateCanvas();
             }
         }
     }
@@ -81,25 +76,8 @@ public class PaintController {
         updateCanvas();
     }
 
-
     public void save() {
-
         svgWriter.save(paintModel, stage);
-        /*
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save as");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        fileChooser.getExtensionFilters().clear();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV","*.csv"));
-
-        File filePath = fileChooser.showSaveDialog(stage);
-
-        if(filePath != null)
-            paintModel.saveToFile(filePath.toPath());
-
-         */
-
     }
 
     public void exit() {

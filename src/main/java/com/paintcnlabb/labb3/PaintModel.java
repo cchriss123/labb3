@@ -78,7 +78,6 @@ public class PaintModel {
             shapes.add(undoList.get(undoList.size() - 1));
             undoList.remove(undoList.get(undoList.size() - 1));
         }
-
     }
 }
 
