@@ -32,14 +32,7 @@ public class Triangle extends Shape {
 
         context.setFill(getColor());
         context.fillPolygon(xcoords,ycoords,3);
-
-
     }
-
-    double sign (Double x1, Double y1,Double x2, Double y2, Double x3, Double y3 ) {
-        return (x1 - x3) * (y2 - y3) - (x2 - x3) * (y1 - y3);
-    }
-
 
 
     @Override
@@ -58,28 +51,6 @@ public class Triangle extends Shape {
             return s<=0 && t<=0 && s+t>=D;
         return s>=0 && t>=0 && s+t<=D;
 
-        /*
-        var x1 = xcoords[0];
-        var x2 = xcoords[1];
-        var x3 = xcoords[2];
-        var y1 = xcoords[0];
-        var y2 = xcoords[1];
-        var y3 = xcoords[2];
-
-        var areaOrig = Math.abs((x2-x1)*(y3-y1) - (x3-x1)*(y2-y1)) ;
-
-        // get the area of 3 triangles made between the point
-        // and the corners of the triangle
-        var area1 =   Math.abs((x1-x)*(y2-y) - (x2-x)*(y1-y)) ;
-        var area2 =   Math.abs((x2-x)*(y3-y) - (x3-x)*(y2-y)) ;
-        var area3 =   Math.abs((x3-x)*(y1-y) - (x1-x)*(y3-y)) ;
-
-        // if the sum of the three areas equals the original,
-        // we're inside the triangle!
-
-        return area1 + area2 + area3 == areaOrig;
-
-         */
     }
 
     @Override
@@ -92,7 +63,6 @@ public class Triangle extends Shape {
 
     @Override
 
-    //TODO!!!!
     public String writeSVG() {
 
         double sizeSquarded = getSize() * getSize();
