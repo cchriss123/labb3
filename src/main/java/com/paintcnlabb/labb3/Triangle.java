@@ -81,6 +81,8 @@ public class Triangle extends Shape {
     }
 
     @Override
+
+    //TODO!!!!
     public String writeSVG() {
     return "Triangele TBC";
     }

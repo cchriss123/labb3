@@ -20,6 +20,7 @@ public class PaintController {
 
 
     PaintModel paintModel = new PaintModel();
+    SvgWriter svgWriter = new SvgWriter();
 
     ObservableList<ShapeType> shapeTypesList = FXCollections.observableArrayList(ShapeType.values());
     public ChoiceBox<ShapeType> choiceBox;
@@ -83,7 +84,7 @@ public class PaintController {
 
     public void save() {
 
-        //svgWriter.saveToFile(paintModel, stage);
+        svgWriter.save(paintModel, stage);
         /*
 
         FileChooser fileChooser = new FileChooser();

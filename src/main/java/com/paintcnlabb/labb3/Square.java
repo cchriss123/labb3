@@ -35,6 +35,7 @@ public class Square extends Shape {
         if(distanceX > 0 && distanceY > 0)
             return (distanceX < distanceCenterToSide) && (distanceY < distanceCenterToSide);
         return false;
+        //TODO FIND THE BUG!
 
 /*
         if ((x > getX() - distanceCenterToSide) && (x < getX() + distanceCenterToSide))
