@@ -49,6 +49,7 @@ public class PaintController {
                 paintModel.shapes.stream()
                         .filter(shape -> shape.isInsideArea(mouseEvent.getX(), mouseEvent.getY()))
                         .findFirst().ifPresent(shape -> {
+
                             shape.setSize(paintModel.getSize());
                             shape.setColor(colorPicker.getValue());
                         });

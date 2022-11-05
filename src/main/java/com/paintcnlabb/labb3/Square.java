@@ -43,6 +43,14 @@ public class Square extends Shape {
                 "height=\"" + getSize() + "\" " +
                 "fill=\"#" + convertColor + "\" />";
     }
+
+    @Override
+    public Shape getShapeDuplicate() {
+        return new Square(getColor(), getSize(), getX(), getY());
+    }
+
+
+
 }
 
 

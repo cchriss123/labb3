@@ -42,4 +42,12 @@ public class Circle extends Shape {
                 "r=\"" + getSize() / 2 + "\" " +
                 "fill=\"" + convertColor + "\" />";
     }
+
+    @Override
+    public Shape getShapeDuplicate() {
+        return new Circle(getColor(), getSize(), getX(), getY());
+    }
+
+
+
 }

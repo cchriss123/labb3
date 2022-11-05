@@ -65,4 +65,11 @@ public class Triangle extends Shape {
                 (getX()-(getSize()/2)) + "," + (getY()+hight*0.33) +
                 "\" " + "fill=\"" + convertColor + "\" />";
     }
+
+    @Override
+    public Shape getShapeDuplicate() {
+        return new Triangle(getColor(), getSize(), getX(), getY());
+    }
+
+
 }
