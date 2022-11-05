@@ -3,7 +3,6 @@ package com.paintcnlabb.labb3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-import java.util.Arrays;
 
 public class Triangle extends Shape {
 
@@ -13,7 +12,6 @@ public class Triangle extends Shape {
     public Triangle(Color currentColor, double size, double x, double y) {
         super(currentColor, size, x, y);
     }
-
 
     @Override
     public void draw(GraphicsContext context) {
@@ -38,37 +36,25 @@ public class Triangle extends Shape {
     @Override
     public boolean isInsideArea(double x, double y) {
 
-        var distanceX = x - xcoords[2];
-        var distanceY = y - ycoords[2];
-        var distanceX21 = xcoords[2]-xcoords[1];
-        var distanceY12 = ycoords[1]-ycoords[2];
-        var D = distanceY12*(xcoords[0]-xcoords[2]) + distanceX21*(ycoords[0]-ycoords[2]);
-        var s = distanceY12*distanceX + distanceX21*distanceY;
-        var t = ((ycoords[2] - ycoords[0]) * distanceX) + ((xcoords[0] - xcoords[2]) * distanceY);
-
+        double distanceX = x - xcoords[2];
+        double distanceY = y - ycoords[2];
+        double distanceX21 = xcoords[2]-xcoords[1];
+        double distanceY12 = ycoords[1]-ycoords[2];
+        double D = distanceY12*(xcoords[0]-xcoords[2]) + distanceX21*(ycoords[0]-ycoords[2]);
+        double s = distanceY12*distanceX + distanceX21*distanceY;
+        double t = ((ycoords[2] - ycoords[0]) * distanceX) + ((xcoords[0] - xcoords[2]) * distanceY);
 
         if (D<0)
             return s<=0 && t<=0 && s+t>=D;
         return s>=0 && t>=0 && s+t<=D;
-
     }
 
     @Override
-    public String toString() {
-        return "Triangle{" +
-                "xcoords=" + Arrays.toString(xcoords) +
-                ", ycoords=" + Arrays.toString(ycoords) +
-                '}';
-    }
-
-    @Override
-
     public String writeSVG() {
 
         double sizeSquarded = getSize() * getSize();
         double halfSizeSquared = (getSize()/2)*(getSize()/2);
         double hight = Math.sqrt(sizeSquarded-halfSizeSquared);
-
 
         String convertColor = "#" + getColor().toString().substring(2, 10);
         return "<polygon " +

@@ -18,22 +18,13 @@ public class Circle extends Shape {
 
         context.setFill(this.getColor());
         context.fillOval(getX()-radius,getY()-radius, getSize(),getSize());
-
-
-
     }
 
     @Override
     public boolean isInsideArea(double x, double y) {
 
-        double radius = getSize()/2;
-
         //In general, x and y must satisfy (x - center_x)² + (y - center_y)² < radius².
-
-        //double distanceXSquared = Math.sqrt(x - getX()*x-getX());
-        //double distanceYSquared = Math.sqrt(y - getY());
-        //double radiusSquared = Math.sqrt(radius);
-
+        double radius = getSize()/2;
 
         double distanceXSquared = (x - getX())*(x - getX());
         double distanceYSquared = (y - getY())*(y - getY());

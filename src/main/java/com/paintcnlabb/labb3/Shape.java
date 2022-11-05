@@ -27,6 +27,13 @@ public abstract class Shape {
                 '}';
     }
 
+    public abstract void draw(GraphicsContext context);
+
+    public abstract boolean isInsideArea(double x, double y);
+
+    public abstract String writeSVG();{
+    }
+
     public double getSize() {
         return size;
     }
@@ -59,10 +66,5 @@ public abstract class Shape {
         this.y = y;
     }
 
-    public abstract void draw(GraphicsContext context);
 
-    public abstract boolean isInsideArea(double x, double y);
-
-    public abstract String writeSVG();{
-    }
 }

@@ -27,8 +27,7 @@ public class SvgWriter {
             assert filePath != null;
             Files.write(filePath.toPath(), svgStrings);
         }
-        catch (IOException e) {
-            throw new RuntimeException(e);
+        catch (Exception ignored) {
         }
     }
 
