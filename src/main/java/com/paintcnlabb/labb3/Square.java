@@ -45,7 +45,7 @@ public class Square extends Shape {
     }
 
     @Override
-    public Shape getShapeDuplicate() {
+    public Shape getCopy() {
         return new Square(getColor(), getSize(), getX(), getY());
     }
 

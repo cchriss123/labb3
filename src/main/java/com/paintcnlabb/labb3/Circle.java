@@ -44,10 +44,7 @@ public class Circle extends Shape {
     }
 
     @Override
-    public Shape getShapeDuplicate() {
+    public Shape getCopy() {
         return new Circle(getColor(), getSize(), getX(), getY());
     }
-
-
-
 }

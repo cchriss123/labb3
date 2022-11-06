@@ -5,26 +5,23 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class PaintModel {
 
     ObjectProperty<Color> color;
     DoubleProperty size;
 
-
     ObjectProperty<ShapeType> currentShapeType = new SimpleObjectProperty<>(ShapeType.CIRCLE);
     ObservableList<Shape> shapes = FXCollections.observableArrayList();
-    ArrayList<Shape> undoList = new ArrayList();
+    ArrayDeque<ArrayDeque<Shape>> undoStack;
 
 
     public PaintModel() {
         this.color = new SimpleObjectProperty<>(Color.BLACK);
         this.size = new SimpleDoubleProperty(50.0);
+        this.undoStack = new ArrayDeque<>();
 
     }
 
@@ -34,13 +31,24 @@ public class PaintModel {
             case SQUARE -> shapes.add(new Square(getColor(), getSize(), x, y));
             case TRIANGLE -> shapes.add(new Triangle(getColor(), getSize(), x, y));
         };
+
+
+    }
+
+    public Deque<Shape> getCopyOfShapes() {
+        Deque<Shape> copyOfShapes = new ArrayDeque<>();
+        shapes.forEach(shape -> copyOfShapes.add(shape.getCopy()));
+        return copyOfShapes;
     }
 
     public void undoShape() {
 
-    if(shapes.size()>0) {
-        undoList.add(shapes.get(shapes.size() - 1));
-        shapes.remove(shapes.size() - 1);
+        if (undoStack.isEmpty())
+            System.out.println("stack empty!");
+        else{
+            //addToRedoDeque();
+            shapes.clear();
+            shapes.addAll(undoStack.removeLast());
         }
     }
 
@@ -74,10 +82,8 @@ public class PaintModel {
     }
 
     public void redoShape() {
-        if(undoList.size() > 0) {
-            shapes.add(undoList.get(undoList.size() - 1));
-            undoList.remove(undoList.get(undoList.size() - 1));
-        }
+        System.out.println("TBC");
+
     }
 }
 

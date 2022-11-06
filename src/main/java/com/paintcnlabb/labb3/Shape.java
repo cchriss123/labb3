@@ -66,7 +66,7 @@ public abstract class Shape {
         this.y = y;
     }
 
-    public abstract Shape getShapeDuplicate();
+    public abstract Shape getCopy();
 
 
 }
