@@ -6,8 +6,8 @@ import javafx.scene.paint.Color;
 
 public class Triangle extends Shape {
 
-    double[] xcoords = new double[3];
-    double[] ycoords = new double[3];
+    double[] xCoords = new double[3];
+    double[] yCoords = new double[3];
 
     public Triangle(Color currentColor, double size, double x, double y) {
         super(currentColor, size, x, y);
@@ -19,30 +19,29 @@ public class Triangle extends Shape {
         double sizeSquarded = getSize() * getSize();
         double halfSizeSquared = (getSize()/2)*(getSize()/2);
         double hight = Math.sqrt(sizeSquarded-halfSizeSquared);
-
-
-        xcoords[0] = getX();
-        ycoords[0] = getY()-hight*0.67;
-        xcoords[1] = getX()+(getSize()/2);
-        ycoords[1] = getY()+hight*0.33;
-        xcoords[2] = getX()-(getSize()/2);
-        ycoords[2] = getY()+hight*0.33;
+        
+        xCoords[0] = getX();
+        yCoords[0] = getY()-hight*0.67;
+        xCoords[1] = getX()+(getSize()/2);
+        yCoords[1] = getY()+hight*0.33;
+        xCoords[2] = getX()-(getSize()/2);
+        yCoords[2] = getY()+hight*0.33;
 
         context.setFill(getColor());
-        context.fillPolygon(xcoords,ycoords,3);
+        context.fillPolygon(xCoords,yCoords,3);
     }
-
-
+    
     @Override
     public boolean isInsideArea(double x, double y) {
 
-        double distanceX = x - xcoords[2];
-        double distanceY = y - ycoords[2];
-        double distanceX21 = xcoords[2]-xcoords[1];
-        double distanceY12 = ycoords[1]-ycoords[2];
-        double D = distanceY12*(xcoords[0]-xcoords[2]) + distanceX21*(ycoords[0]-ycoords[2]);
+        // study barycentric coordinates for explanation
+        double distanceX = x - xCoords[2];
+        double distanceY = y - yCoords[2];
+        double distanceX21 = xCoords[2]-xCoords[1];
+        double distanceY12 = yCoords[1]-yCoords[2];
+        double D = distanceY12*(xCoords[0]-xCoords[2]) + distanceX21*(yCoords[0]-yCoords[2]);
         double s = distanceY12*distanceX + distanceX21*distanceY;
-        double t = ((ycoords[2] - ycoords[0]) * distanceX) + ((xcoords[0] - xcoords[2]) * distanceY);
+        double t = ((yCoords[2] - yCoords[0]) * distanceX) + ((xCoords[0] - xCoords[2]) * distanceY);
 
         if (D<0)
             return s<=0 && t<=0 && s+t>=D;
@@ -70,6 +69,4 @@ public class Triangle extends Shape {
     public Shape getCopy() {
         return new Triangle(getColor(), getSize(), getX(), getY());
     }
-
-
 }

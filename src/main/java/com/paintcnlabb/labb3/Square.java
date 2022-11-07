@@ -9,8 +9,6 @@ public class Square extends Shape {
         super(currentColor, size, x, y);
     }
 
-
-
     @Override
     public void draw(GraphicsContext context) {
 

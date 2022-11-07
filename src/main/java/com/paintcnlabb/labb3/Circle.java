@@ -5,11 +5,9 @@ import javafx.scene.paint.Color;
 
 public class Circle extends Shape {
 
-
     public Circle(Color currentColor, double size, double x, double y) {
         super(currentColor, size, x ,y);
     }
-
 
     @Override
     public void draw(GraphicsContext context){
