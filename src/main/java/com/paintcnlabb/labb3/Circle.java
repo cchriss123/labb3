@@ -3,6 +3,8 @@ package com.paintcnlabb.labb3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import static com.paintcnlabb.labb3.ShapeType.CIRCLE;
+
 public class Circle extends Shape {
 
     public Circle(Color currentColor, double size, double x, double y) {
@@ -44,5 +46,10 @@ public class Circle extends Shape {
     @Override
     public Shape getCopy() {
         return new Circle(getColor(), getSize(), getX(), getY());
+    }
+
+    @Override
+    public ShapeType getShapeType() {
+        return CIRCLE;
     }
 }

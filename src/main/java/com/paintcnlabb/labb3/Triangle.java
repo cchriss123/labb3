@@ -3,6 +3,9 @@ package com.paintcnlabb.labb3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import static com.paintcnlabb.labb3.ShapeType.CIRCLE;
+import static com.paintcnlabb.labb3.ShapeType.TRIANGLE;
+
 
 public class Triangle extends Shape {
 
@@ -68,5 +71,9 @@ public class Triangle extends Shape {
     @Override
     public Shape getCopy() {
         return new Triangle(getColor(), getSize(), getX(), getY());
+    }
+    @Override
+    public ShapeType getShapeType() {
+        return TRIANGLE;
     }
 }

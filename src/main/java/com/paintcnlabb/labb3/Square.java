@@ -3,6 +3,9 @@ package com.paintcnlabb.labb3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import static com.paintcnlabb.labb3.ShapeType.CIRCLE;
+import static com.paintcnlabb.labb3.ShapeType.SQUARE;
+
 public class Square extends Shape {
 
     public Square(Color currentColor, double size, double x, double y) {
@@ -45,6 +48,11 @@ public class Square extends Shape {
     @Override
     public Shape getCopy() {
         return new Square(getColor(), getSize(), getX(), getY());
+    }
+
+    @Override
+    public ShapeType getShapeType() {
+        return SQUARE;
     }
 
 

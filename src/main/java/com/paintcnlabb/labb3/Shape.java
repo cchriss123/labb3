@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public abstract class Shape {
+
     private Color color;
     private double size;
     private double x;
@@ -67,6 +68,8 @@ public abstract class Shape {
     }
 
     public abstract Shape getCopy();
+
+    public abstract ShapeType getShapeType();
 
 
 }

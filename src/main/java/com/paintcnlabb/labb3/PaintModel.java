@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 import java.util.ArrayDeque;
-import java.util.Deque;
 
 public class PaintModel {
 
@@ -50,7 +49,7 @@ public class PaintModel {
     public void redoShape() {
 
         if(!redoStack.isEmpty()){
-            undoStack.addLast(getCopyOfShapes());
+            undoStack.add(getCopyOfShapes());
             shapes.clear();
             shapes.addAll(redoStack.removeLast());
         }
