@@ -12,13 +12,14 @@ public class PaintModel {
     DoubleProperty size;
 
     ObjectProperty<ShapeType> currentShapeType = new SimpleObjectProperty<>(ShapeType.TRIANGLE);
-    ObservableList<Shape> shapes = FXCollections.observableArrayList();
+    ObservableList<Shape> shapes;
     ArrayDeque<ArrayDeque<Shape>> undoStack;
     ArrayDeque<ArrayDeque<Shape>> redoStack;
 
     public PaintModel() {
         this.color = new SimpleObjectProperty<>(Color.BLACK);
         this.size = new SimpleDoubleProperty(50.0);
+        this.shapes = FXCollections.observableArrayList();
         this.undoStack = new ArrayDeque<>();
         this.redoStack = new ArrayDeque<>();
     }
