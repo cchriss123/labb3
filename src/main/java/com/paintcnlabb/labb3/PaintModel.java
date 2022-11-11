@@ -65,7 +65,6 @@ public class PaintModel {
         shape.setColor(this.getColor());
     }
 
-
     public Property<Color> colorProperty() {
         return color;
     }

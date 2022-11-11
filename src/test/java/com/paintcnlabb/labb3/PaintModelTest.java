@@ -1,6 +1,5 @@
 package com.paintcnlabb.labb3;
 import org.junit.jupiter.api.Test;
-import java.util.ArrayDeque;
 
 import static com.paintcnlabb.labb3.ShapeType.TRIANGLE;
 import static org.junit.jupiter.api.Assertions.*;

@@ -3,7 +3,6 @@ package com.paintcnlabb.labb3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-import static com.paintcnlabb.labb3.ShapeType.CIRCLE;
 import static com.paintcnlabb.labb3.ShapeType.TRIANGLE;
 
 
@@ -24,11 +23,11 @@ public class Triangle extends Shape {
         double hight = Math.sqrt(sizeSquarded-halfSizeSquared);
         
         xCoords[0] = getX();
-        yCoords[0] = getY()-hight*0.67;
-        xCoords[1] = getX()+(getSize()/2);
-        yCoords[1] = getY()+hight*0.33;
-        xCoords[2] = getX()-(getSize()/2);
-        yCoords[2] = getY()+hight*0.33;
+        yCoords[0] = Math.round(getY()-hight*0.67);
+        xCoords[1] = Math.round(getX()+(getSize()/2));
+        yCoords[1] = Math.round(getY()+hight*0.33);
+        xCoords[2] = Math.round(getX()-(getSize()/2));
+        yCoords[2] = Math.round(getY()+hight*0.33);
 
         context.setFill(getColor());
         context.fillPolygon(xCoords,yCoords,3);
@@ -62,9 +61,9 @@ public class Triangle extends Shape {
         return "<polygon " +
                 "points=" +
                 "\"" +
-                (getX())               + "," + (getY()-hight*0.67) + " " +
-                (getX()+(getSize()/2)) + "," + (getY()+hight*0.33) + " " +
-                (getX()-(getSize()/2)) + "," + (getY()+hight*0.33) +
+                (getX())               + "," + Math.round(getY()-hight*0.67) + " " +
+                (getX()+(getSize()/2)) + "," + Math.round(getY()+hight*0.33) + " " +
+                (getX()-(getSize()/2)) + "," + Math.round(getY()+hight*0.33) +
                 "\" " + "fill=\"" + convertColor + "\" />";
     }
 
