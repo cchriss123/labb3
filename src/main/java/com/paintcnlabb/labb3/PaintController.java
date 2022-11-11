@@ -13,8 +13,6 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 
-import java.util.ArrayDeque;
-
 public class PaintController {
 
 
@@ -44,19 +42,13 @@ public class PaintController {
 
         switch (mouseEvent.getButton()) {
             case PRIMARY -> {
-                paintModel.undoStack.add(new ArrayDeque<>(paintModel.getCopyOfShapes()));
-                paintModel.redoStack.clear();
                 paintModel.createShape(choiceBox.getValue(), mouseEvent.getX(), mouseEvent.getY());
                 updateCanvas();
             }
             case SECONDARY -> {
                 paintModel.shapes.stream()
                                  .filter(shape -> shape.isInsideArea(mouseEvent.getX(), mouseEvent.getY()))
-                                 .findFirst().ifPresent(shape -> {
-                                        paintModel.undoStack.add(new ArrayDeque<>(paintModel.getCopyOfShapes()));
-                                        shape.setSize(paintModel.getSize());
-                                        shape.setColor(colorPicker.getValue());
-                                        });
+                                 .findFirst().ifPresent(shape -> paintModel.changeShape(shape));
                 updateCanvas();
             }
         }

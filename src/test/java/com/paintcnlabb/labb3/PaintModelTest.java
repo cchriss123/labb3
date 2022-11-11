@@ -20,10 +20,7 @@ class PaintModelTest {
     @Test
     void testingIfShapesIsCorrectSizeAfterUndo(){
 
-        paintModel.undoStack.add(new ArrayDeque<>(paintModel.getCopyOfShapes()));
         paintModel.createShape(TRIANGLE, 100, 100);
-
-        paintModel.undoStack.add(new ArrayDeque<>(paintModel.getCopyOfShapes()));
         paintModel.createShape(TRIANGLE, 100, 100);
 
         paintModel.undoShape();

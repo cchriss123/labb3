@@ -25,6 +25,8 @@ public class PaintModel {
     }
 
     public void createShape(ShapeType type,double x, double y){
+        this.undoStack.add(new ArrayDeque<>(this.getCopyOfShapes()));
+        this.redoStack.clear();
         switch (type) {
             case CIRCLE -> shapes.add(new Circle(getColor(), getSize(), x, y));
             case SQUARE -> shapes.add(new Square(getColor(), getSize(), x, y));
@@ -37,6 +39,7 @@ public class PaintModel {
         shapes.forEach(shape -> copyOfShapes.add(shape.getCopy()));
         return copyOfShapes;
     }
+
 
     public void undoShape() {
 
@@ -55,6 +58,13 @@ public class PaintModel {
             shapes.addAll(redoStack.removeLast());
         }
     }
+
+    public void changeShape(Shape shape){
+        this.undoStack.add(new ArrayDeque<>(this.getCopyOfShapes()));
+        shape.setSize(this.getSize());
+        shape.setColor(this.getColor());
+    }
+
 
     public Property<Color> colorProperty() {
         return color;
