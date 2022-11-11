@@ -1,5 +1,7 @@
 package com.paintcnlabb.labb3;
 
+import Model.PaintModel;
+import Model.ShapeType;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

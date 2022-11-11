@@ -1,4 +1,4 @@
-package com.paintcnlabb.labb3;
+package Model;
 
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
@@ -12,7 +12,7 @@ public class PaintModel {
     DoubleProperty size;
 
     ObjectProperty<ShapeType> currentShapeType = new SimpleObjectProperty<>(ShapeType.TRIANGLE);
-    ObservableList<Shape> shapes;
+    public ObservableList<Shape> shapes;
     ArrayDeque<ArrayDeque<Shape>> undoStack;
     ArrayDeque<ArrayDeque<Shape>> redoStack;
 

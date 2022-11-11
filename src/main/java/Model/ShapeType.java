@@ -1,4 +1,4 @@
-package com.paintcnlabb.labb3;
+package Model;
 
 public enum ShapeType {
     CIRCLE,SQUARE,TRIANGLE

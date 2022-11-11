@@ -5,4 +5,6 @@ module com.paintcnlabb.labbtre {
 
     opens com.paintcnlabb.labb3 to javafx.fxml;
     exports com.paintcnlabb.labb3;
+    exports Model;
+    opens Model to javafx.fxml;
 }

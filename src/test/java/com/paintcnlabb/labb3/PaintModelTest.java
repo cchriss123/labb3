@@ -1,7 +1,8 @@
 package com.paintcnlabb.labb3;
+import Model.PaintModel;
 import org.junit.jupiter.api.Test;
 
-import static com.paintcnlabb.labb3.ShapeType.TRIANGLE;
+import static Model.ShapeType.TRIANGLE;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PaintModelTest {

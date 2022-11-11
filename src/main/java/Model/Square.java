@@ -1,9 +1,9 @@
-package com.paintcnlabb.labb3;
+package Model;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-import static com.paintcnlabb.labb3.ShapeType.SQUARE;
+import static Model.ShapeType.SQUARE;
 
 public class Square extends Shape {
 

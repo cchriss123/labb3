@@ -1,5 +1,6 @@
 package com.paintcnlabb.labb3;
 
+import Model.PaintModel;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
