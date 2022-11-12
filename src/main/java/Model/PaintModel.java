@@ -25,8 +25,8 @@ public class PaintModel {
     }
 
     public void createShape(ShapeType type,double x, double y){
-        this.undoStack.add(new ArrayDeque<>(this.getCopyOfShapes()));
-        this.redoStack.clear();
+        undoStack.add(new ArrayDeque<>(getCopyOfShapes()));
+        redoStack.clear();
         switch (type) {
             case CIRCLE -> shapes.add(new Circle(getColor(), getSize(), x, y));
             case SQUARE -> shapes.add(new Square(getColor(), getSize(), x, y));
@@ -60,9 +60,9 @@ public class PaintModel {
     }
 
     public void changeShape(Shape shape){
-        this.undoStack.add(new ArrayDeque<>(this.getCopyOfShapes()));
-        shape.setSize(this.getSize());
-        shape.setColor(this.getColor());
+        undoStack.add(new ArrayDeque<>(this.getCopyOfShapes()));
+        shape.setSize(getSize());
+        shape.setColor(getColor());
     }
 
     public Property<Color> colorProperty() {
@@ -85,4 +85,6 @@ public class PaintModel {
         return currentShapeType;
     }
 }
+
+
 

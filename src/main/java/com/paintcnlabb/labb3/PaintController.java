@@ -1,5 +1,4 @@
 package com.paintcnlabb.labb3;
-
 import Model.PaintModel;
 import Model.ShapeType;
 import javafx.beans.binding.Bindings;
@@ -16,7 +15,6 @@ import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 
 public class PaintController {
-
 
     PaintModel paintModel = new PaintModel();
     SvgWriter svgWriter = new SvgWriter();
